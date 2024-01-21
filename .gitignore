@@ -1,0 +1,32 @@
+# Node.js dependencies
+node_modules/
+
+# Compiled output
+dist/
+tmp/
+.out/
+
+# Logs
+*.log
+logs/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+
+# Compiled TypeScript
+*.js
+*.js.map
+
+# Compiled CSS
+*.css
+
+# Test coverage
+coverage/
+
+# Environment configuration
+.env
