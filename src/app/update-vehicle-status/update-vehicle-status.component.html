@@ -1,0 +1,46 @@
+<div class="container">
+    <h6 class="text-center m-2">Update Vehicle</h6>
+    <nz-spin [nzSpinning]="isLoading">      
+      <form nz-form class="app-form" [formGroup]="vehicleForm">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="4" nzFor="numberplate">Number Plate</nz-form-label>
+          <nz-form-control [nzSpan]="14">
+            <input nz-input name="Number Plate" type="text" id="numberplate" formControlName="numberPlate">
+          </nz-form-control>
+        </nz-form-item >
+        <nz-form-item>
+            <nz-form-label [nzSpan]="4" nzFor="customername">Customer Name</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input name="Customer name" type="text" id="customername" formControlName="customerName">
+            </nz-form-control>
+        </nz-form-item >
+        <nz-form-item>
+            <nz-form-label [nzSpan]="4" nzFor="customerphone">Customer Phone</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input name="Customer Phone" type="text" id="customerphone" formControlName="phone">
+            </nz-form-control>
+        </nz-form-item >       
+        <nz-form-item>
+          <nz-form-label [nzSpan]="4" nzFor="serviceType">Service Type</nz-form-label>
+          <nz-form-control [nzSpan]="14">
+            <input nz-input name="serviceType" type="text" id="serviceType" readonly formControlName="serviceTypeName">
+          </nz-form-control>
+        </nz-form-item > 
+        <nz-form-item>
+          <nz-form-label [nzSpan]="4" nzFor="vehicleType">Vehicle Type</nz-form-label>
+          <nz-form-control [nzSpan]="14">
+            <input nz-input name="vehicleType" type="text" id="vehicleType" readonly formControlName="vehicleType">
+          </nz-form-control>
+        </nz-form-item > 
+        <nz-form-item>
+            <nz-form-label [nzSpan]="4" nzFor="Price">Amount</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input name="Amount" type="text" id="price" formControlName="price">
+            </nz-form-control>
+        </nz-form-item >
+        <button nz-button nzType="primary" class="w-100 mt-2" (click)="markAsDone()">MARK AS DONE</button>        
+        <button nz-button nzType="default" nzDanger class="w-100 mt-2" [routerLink]="['/vehicle-queue']" routerLinkActive="router-link-active" >CANCEL</button>        
+    </form>  
+    </nz-spin>
+      
+</div>

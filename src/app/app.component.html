@@ -1,0 +1,19 @@
+<mat-sidenav-container class="h-100">
+  <mat-sidenav mode="over" #sidemenu>
+    <nz-list nzBordered>
+      <nz-list-item>Home</nz-list-item>
+      <nz-list-item [routerLink]="['/vehicle-intake', 0]" >Vehicle Intake</nz-list-item>
+      <nz-list-item [routerLink]="['/vehicle-queue']">Queue</nz-list-item>
+      <nz-list-item>Logout</nz-list-item>
+    </nz-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidemenu.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Service Provider</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
