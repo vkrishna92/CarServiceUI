@@ -1,15 +1,15 @@
 <mat-sidenav-container class="h-100">
   <mat-sidenav mode="over" #sidemenu>
-    <nz-list nzBordered>
+    <nz-list nzBordered *ngIf="userLogin">
       <nz-list-item>Home</nz-list-item>
-      <nz-list-item [routerLink]="['/vehicle-intake', 0]" >Vehicle Intake</nz-list-item>
-      <nz-list-item [routerLink]="['/vehicle-queue']">Queue</nz-list-item>
-      <nz-list-item>Logout</nz-list-item>
+      <nz-list-item [routerLink]="['/vehicle-intake', 0]" (click)="sidemenu.toggle()">Vehicle Intake</nz-list-item>
+      <nz-list-item [routerLink]="['/vehicle-queue']" (click)="sidemenu.toggle()">Queue</nz-list-item>
+      <nz-list-item (click)="logout(sidemenu)">Logout</nz-list-item>
     </nz-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar>
-      <button mat-icon-button (click)="sidemenu.toggle()">
+    <mat-toolbar class="sticky-top">
+      <button mat-icon-button (click)="sidemenu.toggle()" *ngIf="userLogin">
         <mat-icon>menu</mat-icon>
       </button>
       <span>Service Provider</span>

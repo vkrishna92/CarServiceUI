@@ -8,7 +8,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(loginDto: any){
+  isLoggedIn = false;
+  login(loginDto: any){    
     return this.http.post("https://localhost:7098/api/Auth/login",loginDto);
   }
 }

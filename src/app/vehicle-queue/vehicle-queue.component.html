@@ -1,8 +1,11 @@
 <div class="container">
     <h6 class="text-center m-2">Queue</h6>
-    <div>    
+    <div class="center-div">
+        <nz-date-picker class="text-center" [(ngModel)]="selectedDate" (ngModelChange)="onDateChange($event)"></nz-date-picker>
+    </div>    
+    <div class="mt-2">    
         <nz-list nzBordered>
-        <nz-list-header>Vehicles</nz-list-header>        
+        <nz-list-header>Vehicles</nz-list-header>     
         @for (item of data; track $index) {
             <nz-ribbon [nzText]="item.status" [nzColor]="getColorByStatus(item.status)">
                 <nz-list-item [routerLink]="['/update-vehicle-status', item.id]" routerLinkActive="router-link-active"  >
@@ -10,11 +13,13 @@
                     <nz-list-item-meta-title>{{item.customerName}}</nz-list-item-meta-title>
                     </nz-list-item-meta>                    
                 </nz-list-item>                
-            </nz-ribbon>
-            
-        }
+            </nz-ribbon>                
+        } 
+        <div class="list-items">
+                   
+        </div>   
         
-        <nz-list-footer>Total : 20</nz-list-footer>
+        <nz-list-footer>Total : {{totalRecords}}</nz-list-footer>
         </nz-list>
         <!--
         <mat-list>

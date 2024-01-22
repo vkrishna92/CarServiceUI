@@ -32,15 +32,27 @@
             <input nz-input name="vehicleType" type="text" id="vehicleType" readonly formControlName="vehicleType">
           </nz-form-control>
         </nz-form-item > 
+        
+
         <nz-form-item>
             <nz-form-label [nzSpan]="4" nzFor="Price">Amount</nz-form-label>
             <nz-form-control [nzSpan]="14">
               <input nz-input name="Amount" type="text" id="price" formControlName="price">
             </nz-form-control>
         </nz-form-item >
-        <button nz-button nzType="primary" class="w-100 mt-2" (click)="markAsDone()">MARK AS DONE</button>        
+       @if (status == 'InService') {
+        <button nz-button nzType="primary" class="w-100 mt-2" (click)="markAsDone()">MARK AS DONE</button>
+       }
+        
         <button nz-button nzType="default" nzDanger class="w-100 mt-2" [routerLink]="['/vehicle-queue']" routerLinkActive="router-link-active" >CANCEL</button>        
     </form>  
+    <nz-divider nzText="Log"></nz-divider>
+    <nz-descriptions >
+      <nz-descriptions-item nzTitle="Accepted On">{{vehicleForm.controls['createdOn'].value | date:'short'}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Accepted By">{{vehicleForm.controls['createdBy'].value}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Updated On">{{vehicleForm.controls['modifiedOn'].value | date:'short' }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Updated By">{{vehicleForm.controls['modifiedBy'].value }}</nz-descriptions-item>          
+    </nz-descriptions>
     </nz-spin>
-      
+    
 </div>

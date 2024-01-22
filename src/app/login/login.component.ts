@@ -31,6 +31,7 @@ export class LoginComponent {
     let model = this.loginForm.getRawValue()
     this.authService.login(model).subscribe( (x:any) =>{
       this.isLoading = false;
+      this.authService.isLoggedIn = true;
       localStorage.setItem('token', x.token);
       localStorage.setItem('storeId',x.storeId);
       this.router.navigate(['/vehicle-queue']);

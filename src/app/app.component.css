@@ -4,3 +4,12 @@
 mat-list-item{
     font-family: 'Raleway' !important;
 }
+
+#fixedDiv {
+    position: fixed;
+    top: 0;
+    left: 0; /* Optional: Set left to 0 to fix the div to the left side of the page */
+    width: 100%; /* Optional: Set width to 100% to make the div full-width */
+    background-color: #ffffff; /* Optional: Set background color as needed */
+    z-index: 1000; /* Optional: Set a higher z-index to ensure the div appears above other elements */
+  }
