@@ -53,8 +53,7 @@ export class VehicleQueueComponent implements OnInit{
     }
   }
 
-  onDateChange(result: Date): void {
-    console.log(result.toLocaleDateString());
+  onDateChange(result: Date): void {    
     let params = new VehicleIntakeQueryParams();
     params.storeId = Number(localStorage.getItem('storeId'));
     params.createdOn = result.toLocaleDateString();

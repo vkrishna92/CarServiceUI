@@ -11,6 +11,8 @@ import {MatListModule} from '@angular/material/list';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { AuthService } from './services/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -22,11 +24,13 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit{
   title = 'CarServiceUI';
   userLogin = false;
-  constructor(private router: Router, private auth: AuthService) {
+  
+  constructor(private router: Router, public auth: AuthService) {
 
   }
-  ngOnInit(): void {
-    this.userLogin = this.auth.isLoggedIn;
+  ngOnInit(): void {   
+    console.log("Ng Oninit") 
+    this.isAuthenticated();     
   }
 
   logout(sideNav: MatSidenav){
@@ -34,7 +38,17 @@ export class AppComponent implements OnInit{
     localStorage.removeItem('token');
     sideNav.toggle();
     this.userLogin = false;
-    this.auth.isLoggedIn = false;
+    this.auth.isAuthenticated.next(false);
     this.router.navigate(['/login']);
+  }
+
+  isAuthenticated(){
+    let token = localStorage.getItem('token');
+    if (token != null){
+      this.userLogin = true;
+    }
+    else{
+      this.userLogin = false;
+    }
   }
 }

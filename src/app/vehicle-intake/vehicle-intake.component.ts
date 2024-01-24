@@ -17,6 +17,7 @@ import { VehicleIntake } from '../models/VehicleIntake';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleIntakeService } from '../services/vehicle-intake.service';
 import { AlertMessage } from '../models/AlertMessage';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-vehicle-intake',
@@ -39,7 +40,7 @@ export class VehicleIntakeComponent implements OnInit {
   vehicleStatus = '';
   vehicleType = 'Sedan';
   alertMsg: AlertMessage = {message:'', type:'info'};
-  constructor(private router: Router, private vehicleIntakeService: VehicleIntakeService, private serviceTypeApi: ServiceTypeService, private route: ActivatedRoute) {  
+  constructor(private router: Router,public auth: AuthService, private vehicleIntakeService: VehicleIntakeService, private serviceTypeApi: ServiceTypeService, private route: ActivatedRoute) {  
     this.vehicleIntakeId = Number(route.snapshot.paramMap.get('id'));
   }
   ngOnInit(): void {
@@ -80,6 +81,10 @@ export class VehicleIntakeComponent implements OnInit {
       this.isLoading = false;
       console.log(err);
     })
+  }
+
+  clickCancel(){
+    
   }
 
   private resetForm(){
