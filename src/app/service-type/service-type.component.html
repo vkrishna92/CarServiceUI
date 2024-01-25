@@ -1,0 +1,27 @@
+<div class="container">
+    <h6 class="text-center m-2">Service Type</h6>
+    <nz-spin [nzSpinning]="isLoading">
+        <nz-alert nzType="success" nzMessage="Success Text" nzDescription="Success Description Success Description Success Description"></nz-alert>
+        <form nz-form>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6" nzFor="name">Service Name</nz-form-label>
+              <nz-form-control [nzSpan]="14">
+                <input nz-input name="name" type="text" id="service">
+              </nz-form-control>
+            </nz-form-item >
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="price">Price</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                  <input nz-input name="name" type="number" id="price">
+                </nz-form-control>
+            </nz-form-item >
+            
+          </form>
+          <div class="">
+            <button class="d-block w-100" nz-button nzType="primary">SAVE</button>            
+            <button class="d-block mt-2 w-100" nz-button nzType="default" nzDanger>CANCEL</button>
+            <button class="d-block mt-2 w-100" nz-button nzType="text" nzDanger>DELETE</button>
+          </div>
+          
+    </nz-spin>
+</div>

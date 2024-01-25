@@ -1,0 +1,12 @@
+<div class="container">
+    <h6 class="text-center">Service Types</h6>
+    
+    <nz-list nzBordered nzSize="small">
+      
+      @for (item of data; track $index) {
+        <nz-list-item [routerLink]="['/service-type',item.id]" routerLinkActive="router-link-active" >{{item.serviceName}}</nz-list-item>
+      }
+      
+      <nz-list-footer>Total: {{data.length}}</nz-list-footer>
+    </nz-list>
+</div>
