@@ -12,10 +12,18 @@ export class ServiceTypeService {
   constructor(private http: HttpClient) { }
 
   GetByStoreId(storeId: number){
-    return this.http.get<any[]>(this.baseUrl +"/GetByStoreId/"+storeId);
+    return this.http.get<any>(this.baseUrl +"/GetByStoreId/"+storeId);
+  }
+
+  get(id: number){
+    return this.http.get<any>(this.baseUrl + "/"+id);
   }
 
   create(serviceType: ServiceType){
     return this.http.post<ServiceType>(this.baseUrl, serviceType);
+  }
+
+  update(serviceType: ServiceType){
+    return this.http.put<ServiceType>(this.baseUrl, serviceType);
   }
 }
