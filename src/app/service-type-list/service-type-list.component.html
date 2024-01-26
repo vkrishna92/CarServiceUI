@@ -1,5 +1,12 @@
 <div class="container">
-    <h6 class="text-center">Service Types</h6>
+    <div class="d-flex justify-content-between p-2">
+        <div><h6>Service Types</h6></div>
+        <div></div>
+        <div>
+            <button  [routerLink]="['/service-type',0]" routerLinkActive="router-link-active"  nz-button nzType="default" nzShape="circle"><span nz-icon nzType="plus"></span></button>       
+        </div>
+    </div>
+    
     <nz-spin [nzSpinning]="isLoading">
         <nz-list nzBordered nzSize="small" >      
             @for (item of data; track $index) {

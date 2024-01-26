@@ -3,11 +3,13 @@ import { NzListModule } from 'ng-zorro-antd/list';
 import { ServiceTypeService } from '../services/service-type.service';
 import { RouterModule } from '@angular/router';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-service-type-list',
   standalone: true,
-  imports: [RouterModule, NzListModule, NzSpinModule],
+  imports: [RouterModule, NzListModule, NzSpinModule, NzIconModule, NzButtonModule],
   templateUrl: './service-type-list.component.html',
   styleUrl: './service-type-list.component.css'
 })
