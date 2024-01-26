@@ -26,4 +26,8 @@ export class ServiceTypeService {
   update(serviceType: ServiceType){
     return this.http.put<ServiceType>(this.baseUrl, serviceType);
   }
+
+  delete(id: number){
+    return this.http.delete(this.baseUrl + "/"+id);
+  }
 }

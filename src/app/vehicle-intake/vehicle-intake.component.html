@@ -28,7 +28,10 @@
             <nz-form-control [nzSpan]="14">
                 <nz-select id="servicetype" [(ngModel)]="serviceType" >
                   @for (item of serviceTypes; track $index) {
-                    <nz-option [nzValue]="item" [nzLabel]="item.serviceName"  ></nz-option>
+                    @if (item.isActive) {
+                      <nz-option [nzValue]="item" [nzLabel]="item.serviceName"  ></nz-option>
+                    }
+                    
                   }                                        
                 </nz-select>              
             </nz-form-control>

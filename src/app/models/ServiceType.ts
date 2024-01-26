@@ -3,6 +3,7 @@ export class ServiceType{
     serviceName = '';
     price = 0;
     storeId = 0;
+    isActive = true;
     createdBy ='';
     createdOn = new Date();
     modifiedBy = '';

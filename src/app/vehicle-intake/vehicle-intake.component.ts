@@ -50,7 +50,7 @@ export class VehicleIntakeComponent implements OnInit {
   getServices(){
     let storeId = Number(localStorage.getItem('storeId'));
     this.serviceTypeApi.GetByStoreId(storeId).subscribe(x =>{
-      this.serviceTypes = x;
+      this.serviceTypes = x.items;
     })
   }
   onServiceTypeSelection(val: any){

@@ -1,8 +1,8 @@
 <div class="container">
     <h6 class="text-center m-2">Service Type</h6>
     <nz-spin [nzSpinning]="isLoading">
-        @if (false) {
-            <nz-alert *ngIf="false" nzType="success" nzMessage="Success Text" nzDescription="Success Description Success Description Success Description"></nz-alert>
+        @if (alertMsg.message != '') {
+            <nz-alert [nzType]="alertMsg.type" [nzMessage]="alertMsg.message" [nzCloseable]="true"></nz-alert>
         }        
         <form nz-form [formGroup]="serviceTypeForm">
             <nz-form-item>
@@ -17,12 +17,17 @@
                   <input nz-input name="name" type="number" id="price" formControlName="price">
                 </nz-form-control>
             </nz-form-item >
-            
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="isActive">Is Active</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                  <nz-switch formControlName="isActive" id="isActive"></nz-switch>                  
+                </nz-form-control>
+            </nz-form-item>
           </form>
           <div class="">
             <button class="d-block w-100" nz-button nzType="primary" (click)="clickSave()">SAVE</button>            
-            <button class="d-block mt-2 w-100" nz-button nzType="default" nzDanger>CANCEL</button>
-            <button class="d-block mt-2 w-100" nz-button nzType="text" nzDanger>DELETE</button>
+            <button class="d-block mt-2 w-100" nz-button nzType="default" (click)="clickCancel()" nzDanger>CANCEL</button>
+            <button class="d-block mt-2 w-100" nz-button nzType="text" (click)="clickDelete()" nzDanger>DELETE</button>
           </div>
           
     </nz-spin>

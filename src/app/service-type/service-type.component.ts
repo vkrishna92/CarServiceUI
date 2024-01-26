@@ -6,17 +6,18 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
 
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AlertMessage } from '../models/AlertMessage';
 import { ServiceTypeService } from '../services/service-type.service';
 import { ServiceType } from '../models/ServiceType';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-service-type',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule, NzAlertModule, NzSpinModule, NzSelectModule, NzInputModule, NzButtonModule, NzFormModule],
+  imports: [FormsModule,ReactiveFormsModule,NzSwitchModule, NzAlertModule, NzSpinModule, NzSelectModule, NzInputModule, NzButtonModule, NzFormModule],
   templateUrl: './service-type.component.html',
   styleUrl: './service-type.component.css'
 })
@@ -30,6 +31,7 @@ export class ServiceTypeComponent implements OnInit{
     serviceName : new FormControl('',[Validators.required]),
     price : new FormControl(0, [Validators.required]),
     storeId : new FormControl(0,[Validators.required]),
+    isActive : new FormControl(true),
     createdOn : new FormControl(new Date(), [Validators.required]),
     createdBy : new FormControl(''),
     modifiedOn : new FormControl(new Date()),
@@ -37,7 +39,7 @@ export class ServiceTypeComponent implements OnInit{
   });
 
  
-  constructor(private serviceTypeService: ServiceTypeService, private route : ActivatedRoute) {
+  constructor(private serviceTypeService: ServiceTypeService, private route : ActivatedRoute, private router: Router) {
   }
   ngOnInit(): void {
     this.serviceTypeId =  Number(this.route.snapshot.paramMap.get('id'));
@@ -57,6 +59,7 @@ export class ServiceTypeComponent implements OnInit{
     serviceType.serviceName = model.serviceName as string;
     serviceType.price = model.price as number;
     serviceType.storeId = storeId;
+    serviceType.isActive = model.isActive as boolean;
     serviceType.createdOn = model.createdOn as Date;
     serviceType.createdBy = model.createdBy as string;
     serviceType.modifiedBy = model.modifiedBy as string;
@@ -66,15 +69,23 @@ export class ServiceTypeComponent implements OnInit{
       this.isLoading = true;
       this.serviceTypeService.create(serviceType).subscribe(x =>{
         this.isLoading = false;
+        this.alertMsg.message = "Service Type created successfully";
+        this.alertMsg.type = "success";        
       },err =>{
         this.isLoading = false;
+        this.alertMsg.message = "Error creating Service Type";
+        this.alertMsg.type = "error";
       })
     }
     else{
       this.isLoading = true;
       this.serviceTypeService.update(serviceType).subscribe(x =>{
         this.isLoading = false;
+        this.alertMsg.message = "Service Type updated successfully";
+        this.alertMsg.type = "success";
       }, err=>{
+        this.alertMsg.message = "Error updating Service Type";
+        this.alertMsg.type = "error";
         this.isLoading = false;
       })
     }
@@ -94,11 +105,19 @@ export class ServiceTypeComponent implements OnInit{
   }
 
   clickCancel(){
-
+    this.router.navigate(['/service-types']);
   }
 
   clickDelete(){
-
+    this.isLoading = true;
+    this.serviceTypeService.delete(this.serviceTypeId).subscribe(x =>{
+      this.isLoading = false;
+     this.router.navigate(['/service-types']);
+    }, err=>{
+      this.alertMsg.message = "Error deleting Service Type";
+      this.alertMsg.type = "error";
+      this.isLoading = false;
+    })
   }
 
   private _setForm(obj: ServiceType){
@@ -107,6 +126,7 @@ export class ServiceTypeComponent implements OnInit{
       serviceName : obj.serviceName,
       price : obj.price,
       storeId : obj.storeId,
+      isActive : obj.isActive,
       createdBy: obj.createdBy,
       createdOn :obj.createdOn,
       modifiedBy : obj.modifiedBy,
