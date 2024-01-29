@@ -1,0 +1,30 @@
+<!-- FILEPATH: /c:/Users/vkris/OneDrive/Documents/GitHub/CarServiceUI/src/app/vehicle-service-history/vehicle-service-history.component.html -->
+<!-- BEGIN: abpxx6d04wxr -->
+<div class="container-fluid">
+    <div class="text-center m-2">      
+        <form [formGroup]="filterForm" (ngSubmit)="search()">
+            <nz-form-item>                
+                <nz-input-group [nzSuffix]="suffixIconSearch">
+                    <input type="search" nz-input placeholder="Search with number plate " formControlName="numberPlate"/>
+                </nz-input-group>
+                <ng-template #suffixIconSearch >
+                    <span nz-icon nzType="search"></span>
+                </ng-template>
+            </nz-form-item>            
+        </form>
+        
+    </div>
+    <nz-spin [nzSpinning]="isLoading">
+        <div class="scrollable-div" >
+            <!-- BEGIN: be15d9bcejpp -->
+            @for (item of data; track $index) {
+                <nz-card nzSize="small" class="m-1" [nzTitle]="item.serviceType.serviceName" [routerLink]="['/service-invoice', item.id]" routerLinkActive="router-link-active" >
+                    <p class="text-secondary">{{item.createdOn | date:'short'}}</p>                    
+                </nz-card>       
+            }
+            <!-- END: be15d9bcejpp -->
+        </div>
+    </nz-spin>
+    
+</div>
+<!-- END: abpxx6d04wxr -->

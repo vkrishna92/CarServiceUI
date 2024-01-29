@@ -1,0 +1,15 @@
+<div class="container-fluid">  
+    <div class="service-details">
+        <nz-descriptions class="m-3" nzTitle="Service Details">
+            <nz-descriptions-item nzTitle="Full Name">{{data.customerName}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Phone">{{data.phone}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Number Plate">{{data.numberPlate}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Vehicle Type">{{data.vehicleType}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Service Type">{{data.serviceType.serviceName}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Price">{{data.serviceType.price}}</nz-descriptions-item>            
+        </nz-descriptions>
+    </div>  
+    <button class="d-block mt-2 w-100" nz-button nzType="primary">SEND EMAIL</button>
+    <button class="d-block mt-2 w-100" nz-button nzType="default" nzDanger (click)="clickBack()">BACK</button>
+    
+</div>

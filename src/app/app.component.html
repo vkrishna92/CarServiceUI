@@ -4,7 +4,9 @@
       <nz-list-item>Home</nz-list-item>
       <nz-list-item [routerLink]="['/vehicle-intake', 0]" (click)="sidemenu.toggle()">Vehicle Intake</nz-list-item>
       <nz-list-item [routerLink]="['/vehicle-queue']" (click)="sidemenu.toggle()">Queue</nz-list-item>
+      <nz-list-item [routerLink]="['/vehicle-history-search']" (click)="sidemenu.toggle()">Vehicle History</nz-list-item>
       <nz-list-item [routerLink]="['/service-type']" (click)="sidemenu.toggle()">Service Type</nz-list-item>
+      
       <nz-list-item (click)="logout(sidemenu)">Logout</nz-list-item>
     </nz-list>
   </mat-sidenav>

@@ -59,6 +59,7 @@ export class VehicleQueueComponent implements OnInit{
     params.createdOn = result.toLocaleDateString();
     params.skip = 0;
     params.take = 0;  
+    params.numberPlate = '';
 
     this.vehicleIntakeService.searchIntake(params).subscribe(x =>{
       this.data = x.items;

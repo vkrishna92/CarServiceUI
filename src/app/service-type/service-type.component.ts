@@ -105,7 +105,7 @@ export class ServiceTypeComponent implements OnInit{
   }
 
   clickCancel(){
-    this.router.navigate(['/service-types']);
+    this.router.navigate(['/service-type']);
   }
 
   clickDelete(){

@@ -30,8 +30,17 @@ export class VehicleIntakeService {
     return this.http.post<any>(this.baseUrl+"/", model);
   }
 
-  searchIntake(params: VehicleIntakeQueryParams){
-    const httpParams = new HttpParams().set("storeId",params.storeId).set("createdOn", params.createdOn)
+  search(params: VehicleIntakeQueryParams){
+    const httpParams = new HttpParams().set("storeId",params.storeId).set("numberPlate", params.numberPlate) .set("createdOn", params.createdOn)
+    .set("take",params.take).set("skip", params.skip);
+
+    const options = { params: httpParams};
+
+    return this.http.get<VehicleIntake[]>(this.baseUrl+"/search",options);
+  }
+
+  searchIntake(params: VehicleIntakeQueryParams){    
+    const httpParams = new HttpParams().set("storeId",params.storeId).set("createdOn", params.createdOn).set("numberPlate", params.numberPlate)
     .set("take",params.take).set("skip", params.skip);
 
     const options = { params: httpParams};
