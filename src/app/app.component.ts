@@ -46,9 +46,18 @@ export class AppComponent implements OnInit{
     let token = localStorage.getItem('token');
     if (token != null){
       this.userLogin = true;
+      this.getUserRoles();
     }
     else{
       this.userLogin = false;
     }
+  }
+
+  getUserRoles(){
+    this.auth.getCurrentUserRoles().subscribe(x =>{
+      console.log(x);
+    },err =>{
+      console.log(err);
+    });
   }
 }

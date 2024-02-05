@@ -1,0 +1,33 @@
+<div class="container">
+    <h6 class="text-center mt-2">My Profile</h6>
+    <nz-spin [nzSpinning]="isLoading">
+        @if (alertMsg.message != '') {
+            <nz-alert [nzType]="alertMsg.type" [nzMessage]="alertMsg.message" [nzCloseable]="true"></nz-alert>
+        }   
+        <form nz-form [formGroup]="userProfileForm">           
+              <nz-form-item>
+                <nz-form-label [nzSpan]="4" nzFor="displayName">Display Name</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                  <input nz-input name="displayName" type="text" id="displayName" formControlName="displayName">
+                </nz-form-control>
+              </nz-form-item >
+              <nz-form-item>
+                <nz-form-label [nzSpan]="4" nzFor="displayName">Email address</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                  <input nz-input name="displayName" type="text" id="displayName" formControlName="displayName">
+                </nz-form-control>
+              </nz-form-item >
+              <nz-form-item>
+                <nz-form-label [nzSpan]="4" nzFor="phone">Phone</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                  <input nz-input name="phone" type="text" id="phone" formControlName="phoneNumber">
+                </nz-form-control>
+              </nz-form-item >
+        </form>
+        <div class="">
+            <button class="d-block w-100" nz-button nzType="primary" (click)="clickSave()">SAVE</button>
+            <button class="d-block w-100 mt-2" nz-button nzType="default" [routerLink]="['/reset-password']" routerLinkActive="router-link-active" >RESET PASSWORD</button>         
+        </div>       
+    </nz-spin>
+    
+</div>

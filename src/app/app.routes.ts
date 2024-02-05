@@ -9,6 +9,8 @@ import { VehicleServiceHistoryComponent } from './vehicle-service-history/vehicl
 import { ServiceInvoiceComponent } from './service-invoice/service-invoice.component';
 import { DiscountCodeListComponent } from './discount-code-list/discount-code-list.component';
 import { AddEditDiscountCodeComponent } from './add-edit-discount-code/add-edit-discount-code.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 export const routes: Routes = [
     {path:'vehicle-intake/:id', component: VehicleIntakeComponent}, 
@@ -20,5 +22,7 @@ export const routes: Routes = [
     { path : 'discount-codes', component: DiscountCodeListComponent},
     { path : 'discount-code/:id', component: AddEditDiscountCodeComponent},
     {path:'login', component: LoginComponent},
+    {path:'myprofile', component: MyProfileComponent},
+    {path :'reset-password', component: ResetPasswordComponent},
     {path:'update-vehicle-status/:id', component:UpdateVehicleStatusComponent}
 ];
