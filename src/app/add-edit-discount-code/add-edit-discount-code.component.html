@@ -1,0 +1,30 @@
+<div class="container">
+    <h6 class="text-center">Discount Code</h6>
+    <nz-spin [nzSpinning]="isLoading">
+        <form nz-form [formGroup]="discountCodeForm">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="code">Code</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <input nz-input name="code" type="text" id="code" formControlName="code">
+                </nz-form-control>
+            </nz-form-item>            
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="discount">Discount</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <nz-input-number class="w-100" formControlName="percentage" [nzMin]="1" [nzMax]="100" [nzStep]="1" [nzFormatter]="formatterPercent" [nzParser]="parserPercent"></nz-input-number>                    
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="isActive">Is Active</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <nz-switch formControlName="isActive" id="isActive"></nz-switch>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+        <div class="">
+            <button class="d-block w-100" nz-button nzType="primary" (click)="clickSave()">SAVE</button>
+            <button class="d-block mt-2 w-100" nz-button nzType="default" nzDanger>CANCEL</button>
+        </div>
+    </nz-spin>
+    
+</div>

@@ -9,10 +9,12 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertMessage } from '../models/AlertMessage';
+
 import { ServiceTypeService } from '../services/service-type.service';
 import { ServiceType } from '../models/ServiceType';
-import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-service-type',
@@ -29,6 +31,7 @@ export class ServiceTypeComponent implements OnInit{
   serviceTypeForm = new FormGroup({
     id: new FormControl(0),
     serviceName : new FormControl('',[Validators.required]),
+    description : new FormControl(''),
     price : new FormControl(0, [Validators.required]),
     storeId : new FormControl(0,[Validators.required]),
     isActive : new FormControl(true),
@@ -57,6 +60,7 @@ export class ServiceTypeComponent implements OnInit{
 
     serviceType.id = this.serviceTypeId;
     serviceType.serviceName = model.serviceName as string;
+    serviceType.description = model.description as string;
     serviceType.price = model.price as number;
     serviceType.storeId = storeId;
     serviceType.isActive = model.isActive as boolean;
@@ -124,6 +128,7 @@ export class ServiceTypeComponent implements OnInit{
     this.serviceTypeForm.patchValue({
       id : obj.id,
       serviceName : obj.serviceName,
+      description : obj.description,
       price : obj.price,
       storeId : obj.storeId,
       isActive : obj.isActive,

@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="d-flex justify-content-between p-2">
+        <div><h6>Discount Codes</h6></div>
+        <div></div>
+        <div>
+            <button  [routerLink]="['/discount-code',0]" routerLinkActive="router-link-active"  nz-button nzType="default" nzShape="circle"><span nz-icon nzType="plus"></span></button>       
+        </div>
+    </div>
+    
+    <nz-spin [nzSpinning]="isLoading">
+        <nz-list nzBordered nzSize="small" >      
+            @for (item of data; track $index) {
+                <nz-list-item [routerLink]="['/discount-code',item.id]" routerLinkActive="router-link-active" >
+                    
+                    <span [ngClass]="{'text-danger': item.isActive === false}">{{item.code}}</span>                     
+                </nz-list-item>
+            }            
+            <nz-list-footer>Total: {{data.length}}</nz-list-footer>
+        </nz-list>
+    </nz-spin>
+    
+</div>

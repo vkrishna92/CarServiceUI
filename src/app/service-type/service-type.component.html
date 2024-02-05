@@ -12,6 +12,12 @@
               </nz-form-control>
             </nz-form-item >
             <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="description">Description</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                  <textarea nz-input rows="8" name="description" id="description" formControlName="description"></textarea>
+                </nz-form-control>
+            </nz-form-item >
+            <nz-form-item>
                 <nz-form-label [nzSpan]="6" nzFor="price">Price</nz-form-label>
                 <nz-form-control [nzSpan]="14">
                   <input nz-input name="name" type="number" id="price" formControlName="price">
