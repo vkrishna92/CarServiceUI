@@ -1,15 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { ServiceTypeService } from '../services/service-type.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+
+import { AgGridAngular } from 'ag-grid-angular';
+import { ColDef } from 'ag-grid-community'; // Column Definition Type Interface
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @Component({
   selector: 'app-service-type-list',
   standalone: true,
-  imports: [RouterModule, NzListModule, NzSpinModule, NzIconModule, NzButtonModule],
+  imports: [RouterModule,
+    MatToolbarModule,
+    NzListModule,
+    NzSpinModule,
+    NzIconModule,
+    NzButtonModule,
+    NzBreadCrumbModule,
+
+    AgGridAngular    
+  ],
   templateUrl: './service-type-list.component.html',
   styleUrl: './service-type-list.component.css'
 })
@@ -17,7 +32,14 @@ export class ServiceTypeListComponent implements OnInit{
 
   data : any[] = [];
   isLoading = false;
-  constructor(private serviceTyperService: ServiceTypeService) {
+  colDefs: ColDef[] = [
+    { field: "id" },
+    { field: "serviceName" },
+    { field: "price" },
+    { field: "isActive" }
+    
+  ];
+  constructor(private serviceTyperService: ServiceTypeService, private router: Router) {
 
   }
   ngOnInit(): void {
@@ -34,6 +56,9 @@ export class ServiceTypeListComponent implements OnInit{
       console.log(err);
       this.isLoading = false;
     })
+  }
+  onRowDoubleClicked(event: any){
+    this.router.navigate(['/service-type', event.data.id]);
   }
   
 

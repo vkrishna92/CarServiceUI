@@ -1,38 +1,53 @@
-<div class="container">
-    <h6 class="text-center m-2">Service Type</h6>
+<mat-toolbar>
+  <span>Service Type</span>
+</mat-toolbar>
+<div class="container-fluid">
+  <nz-breadcrumb class="m-1">
+    <nz-breadcrumb-item>Home</nz-breadcrumb-item>       
+    <nz-breadcrumb-item>Service Types</nz-breadcrumb-item>
+  </nz-breadcrumb>
+  @if (false) {
+    <div class="d-flex justify-content-between">
+      <h6 class="text-center">Service Type</h6>
+      <div></div>
+    </div>
+  }
+  
+    
     <nz-spin [nzSpinning]="isLoading">
-        @if (alertMsg.message != '') {
-            <nz-alert [nzType]="alertMsg.type" [nzMessage]="alertMsg.message" [nzCloseable]="true"></nz-alert>
-        }        
-        <form nz-form [formGroup]="serviceTypeForm">
-            <nz-form-item>
-              <nz-form-label [nzSpan]="6" nzFor="name">Service Name</nz-form-label>
-              <nz-form-control [nzSpan]="14">
-                <input nz-input name="name" type="text" id="service" formControlName="serviceName">
-              </nz-form-control>
-            </nz-form-item >
-            <nz-form-item>
-                <nz-form-label [nzSpan]="6" nzFor="description">Description</nz-form-label>
-                <nz-form-control [nzSpan]="14">
-                  <textarea nz-input rows="8" name="description" id="description" formControlName="description"></textarea>
-                </nz-form-control>
-            </nz-form-item >
-            <nz-form-item>
-                <nz-form-label [nzSpan]="6" nzFor="price">Price</nz-form-label>
-                <nz-form-control [nzSpan]="14">
-                  <input nz-input name="name" type="number" id="price" formControlName="price">
-                </nz-form-control>
-            </nz-form-item >
-            <nz-form-item>
-                <nz-form-label [nzSpan]="6" nzFor="isActive">Is Active</nz-form-label>
-                <nz-form-control [nzSpan]="14">
-                  <nz-switch formControlName="isActive" id="isActive"></nz-switch>                  
-                </nz-form-control>
-            </nz-form-item>
-          </form>
-          <div class="">
-            <button class="d-block w-100" nz-button nzType="primary" (click)="clickSave()">SAVE</button>            
-            <button class="d-block mt-2 w-100" nz-button nzType="default" (click)="clickCancel()" nzDanger>CANCEL</button>            
+      @if (alertMsg.message != '') {
+        <nz-alert [nzType]="alertMsg.type" [nzMessage]="alertMsg.message" [nzCloseable]="true"></nz-alert>
+      } 
+        <form nz-form [formGroup]="serviceTypeForm" class="row mt-3">
+          
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="name">Service Name</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input name="name" type="text" id="service" formControlName="serviceName">
+            </nz-form-control>
+          </nz-form-item >
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="description">Description</nz-form-label>
+            <nz-form-control  [nzSpan]="14">
+              <textarea nz-input rows="8" name="description" id="description" formControlName="description"></textarea>
+            </nz-form-control>
+          </nz-form-item >
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="price">Price</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <input nz-input name="name" type="number" id="price" formControlName="price">
+            </nz-form-control>
+          </nz-form-item >
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="isActive">Is Active</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+              <nz-switch formControlName="isActive" id="isActive"></nz-switch>                  
+            </nz-form-control>
+          </nz-form-item> 
+        </form>
+          <div class="d-flex justify-content-center">            
+            <button class="m-1" nz-button nzType="default" (click)="clickCancel()" nzDanger>CANCEL</button>            
+            <button class="m-1" nz-button nzType="primary" (click)="clickSave()">SAVE</button>            
           </div>
           
     </nz-spin>

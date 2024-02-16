@@ -7,6 +7,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,12 +15,24 @@ import { AlertMessage } from '../models/AlertMessage';
 
 import { ServiceTypeService } from '../services/service-type.service';
 import { ServiceType } from '../models/ServiceType';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @Component({
   selector: 'app-service-type',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,NzSwitchModule, NzAlertModule, NzSpinModule, NzSelectModule, NzInputModule, NzButtonModule, NzFormModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    NzSwitchModule,
+    NzAlertModule,
+    NzSpinModule,
+    NzSelectModule,
+    NzInputModule,
+    NzButtonModule,
+    NzFormModule,
+    NzBreadCrumbModule],
   templateUrl: './service-type.component.html',
   styleUrl: './service-type.component.css'
 })

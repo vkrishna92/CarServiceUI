@@ -1,6 +1,19 @@
-<div class="container">
-    <h6 class="text-center">Discount Code</h6>
+@if (false) {
+    <mat-toolbar class="shadow-sm">
+        Discount Code
+    </mat-toolbar>
+    <nz-breadcrumb class="m-3" >
+        <nz-breadcrumb-item>Home</nz-breadcrumb-item>       
+        <nz-breadcrumb-item>Discount Codes</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    
+}
+
+<div class="">    
     <nz-spin [nzSpinning]="isLoading">
+        @if (alertMsg.message != '') {
+            <nz-alert class="m-2" [nzType]="alertMsg.type" [nzMessage]="alertMsg.message" [nzCloseable]="true"></nz-alert>
+          } 
         <form nz-form [formGroup]="discountCodeForm">
             <nz-form-item>
                 <nz-form-label [nzSpan]="6" nzFor="code">Code</nz-form-label>
@@ -21,9 +34,9 @@
                 </nz-form-control>
             </nz-form-item>
         </form>
-        <div class="">
-            <button class="d-block w-100" nz-button nzType="primary" (click)="clickSave()">SAVE</button>
-            <button class="d-block mt-2 w-100" nz-button nzType="default" nzDanger>CANCEL</button>
+        <div class="d-flex justify-content-center">            
+            <button class="m-1" nz-button nzType="default" nzDanger (click)="clickCancel()">CANCEL</button>
+            <button class="m-1" nz-button nzType="primary" (click)="clickSave()">SAVE</button>
         </div>
     </nz-spin>
     

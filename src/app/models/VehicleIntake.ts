@@ -10,6 +10,7 @@ export class VehicleIntake{
     serviceType = new ServiceType();
     vehicleType = '';
     status ='';
+    discountCodeId = 0;
     createdBy = '';
     createdOn = new Date();
     modifiedOn = new Date();

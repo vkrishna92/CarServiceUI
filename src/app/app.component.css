@@ -13,3 +13,40 @@ mat-list-item{
     background-color: #ffffff; /* Optional: Set background color as needed */
     z-index: 1000; /* Optional: Set a higher z-index to ensure the div appears above other elements */
   }
+
+.side-menu{
+    width:15%;
+}
+.side-menu-selected{
+    background-color: #595959;
+}
+.side-menu-selected{
+    background-color: #404040;
+}
+mat-toolbar{
+    border-bottom: 1px solid #D3D3D3;
+}
+mat-sidenav{
+    
+    background-color: #404040;
+    color: white !important;
+    
+}
+.title{
+    color: white !important;
+}
+nz-list-item {
+    padding-left: 20px;
+    color: white;
+}
+.ant-list-split .ant-list-item{
+    border-bottom: 0px ;
+}
+nz-list-item:hover{
+    cursor: pointer;
+    background-color: #595959;
+}
+
+mat-sidenav-content{
+    background-color:#F2F2F2;
+}

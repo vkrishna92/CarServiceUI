@@ -5,16 +5,19 @@
     </div>    
     <div class="mt-2">    
         <nz-list nzBordered>
-        <nz-list-header>Vehicles</nz-list-header>     
-        @for (item of data; track $index) {
-            <nz-ribbon [nzText]="item.status" [nzColor]="getColorByStatus(item.status)">
-                <nz-list-item [routerLink]="['/update-vehicle-status', item.id]" routerLinkActive="router-link-active"  >
-                    <nz-list-item-meta [nzDescription]="item.numberPlate">
-                    <nz-list-item-meta-title>{{item.customerName}}</nz-list-item-meta-title>
-                    </nz-list-item-meta>                    
-                </nz-list-item>                
-            </nz-ribbon>                
-        } 
+        <nz-list-header>Vehicles</nz-list-header>
+        <div class="scrollable-div" >
+            @for (item of data; track $index) {
+                <nz-ribbon [nzText]="item.status" [nzColor]="getColorByStatus(item.status)">
+                    <nz-list-item [routerLink]="['/update-vehicle-status', item.id]" routerLinkActive="router-link-active"  >
+                        <nz-list-item-meta [nzDescription]="item.numberPlate">
+                        <nz-list-item-meta-title>{{item.customerName}}</nz-list-item-meta-title>
+                        </nz-list-item-meta>                    
+                    </nz-list-item>                
+                </nz-ribbon>                
+            } 
+        </div>     
+        
         <div class="list-items">
                    
         </div>   

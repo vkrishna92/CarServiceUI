@@ -1,7 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+/* Core Grid CSS */
+@import 'ag-grid-community/styles/ag-grid.css';
+/* Quartz Theme Specific CSS */
+@import 'ag-grid-community/styles/ag-theme-quartz';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Raleway'; }
+body { 
+    margin: 0; 
+    font-family: "Work Sans", sans-serif;;     
+}
+mat-toolbar{
+    font-family: "Work Sans", sans-serif !important;
+}
+mat-toolbar{
+    font-size: 18px !important;
+    height: fit-content !important ;
+    padding: 10px 20px 10px 20px !important;
+    border-bottom: 2px solid #D3D3D3 !important; 
+}
 
 .ant-card-head-title{
     font-weight: bold !important;

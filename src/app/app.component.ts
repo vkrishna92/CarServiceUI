@@ -14,16 +14,27 @@ import { AuthService } from './services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subject } from 'rxjs';
 
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,RouterModule, RouterOutlet, NzListModule, NzPageHeaderModule, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule],
+  imports: [CommonModule,RouterModule, RouterOutlet,
+    NzListModule, 
+    NzPageHeaderModule,
+    NzBreadCrumbModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
   title = 'CarServiceUI';
   userLogin = false;
+  selectedMenuItem = '';
   
   constructor(private router: Router, public auth: AuthService) {
 
@@ -59,5 +70,8 @@ export class AppComponent implements OnInit{
     },err =>{
       console.log(err);
     });
+  }
+  selectMenuItem(item: string){
+    this.selectedMenuItem = item;
   }
 }

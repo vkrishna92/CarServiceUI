@@ -26,7 +26,7 @@
         <nz-form-item>
             <nz-form-label [nzSpan]="4" nzFor="servicetype">Service Type</nz-form-label>
             <nz-form-control [nzSpan]="14">
-                <nz-select id="servicetype" [(ngModel)]="serviceType" >
+                <nz-select id="servicetype" [(ngModel)]="serviceType" (ngModelChange)="onServiceTypeSelection($event)">
                   @for (item of serviceTypes; track $index) {
                     @if (item.isActive) {
                       <nz-option [nzValue]="item" [nzLabel]="item.serviceName"  ></nz-option>
@@ -36,6 +36,17 @@
                 </nz-select>              
             </nz-form-control>
         </nz-form-item >
+        <nz-form-item>
+            <nz-form-label [nzSpan]="4" nzFor="discountcodes">Discount Codes</nz-form-label>
+            <nz-form-control [nzSpan]="14" >
+                <nz-select id="discountcodes" [(ngModel)]="discountCodeId" (ngModelChange)="discountCodeChanged($event)">
+                  @for (item of discountCodes; track $index) {
+                    <nz-option [nzValue]="item" [nzLabel]="item.code"></nz-option>
+                  }                  
+                </nz-select>              
+            </nz-form-control>
+        </nz-form-item >
+        
         <nz-form-item>
             <nz-form-label [nzSpan]="4" nzFor="vehicletypes">Vehicle Type</nz-form-label>
             <nz-form-control [nzSpan]="14" >
@@ -49,7 +60,7 @@
         <nz-form-item>
             <nz-form-label [nzSpan]="4" nzFor="Price">Amount</nz-form-label>
             <nz-form-control [nzSpan]="14" >
-              <input nz-input name="Amount" type="text" id="price" readonly [(ngModel)]="serviceType.price">
+              <input nz-input name="Amount" type="text" id="price" readonly [(ngModel)]="price">
             </nz-form-control>
         </nz-form-item >
         <button nz-button nzType="primary" class="w-100 mt-2" (click)="clickAccept()">ACCEPT</button>

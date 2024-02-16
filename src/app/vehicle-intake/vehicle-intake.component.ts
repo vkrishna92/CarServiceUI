@@ -18,6 +18,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleIntakeService } from '../services/vehicle-intake.service';
 import { AlertMessage } from '../models/AlertMessage';
 import { AuthService } from '../services/auth.service';
+import { DiscountCodeService } from '../services/discount-code.service';
+import { DiscountCode } from '../models/DiscountCode';
 
 @Component({
   selector: 'app-vehicle-intake',
@@ -29,6 +31,7 @@ import { AuthService } from '../services/auth.service';
 export class VehicleIntakeComponent implements OnInit {
   
   serviceTypes : ServiceType[]= [];
+  discountCodes : DiscountCode[] = []; 
   serviceType = new ServiceType();
   isLoading = false;
   
@@ -39,8 +42,17 @@ export class VehicleIntakeComponent implements OnInit {
   phone = '';
   vehicleStatus = '';
   vehicleType = 'Sedan';
+  discountCodeId = 0;
+  price = 0;
+
+  /**SELECTED VALUES */
+  
+
+
   alertMsg: AlertMessage = {message:'', type:'info'};
-  constructor(private router: Router,public auth: AuthService, private vehicleIntakeService: VehicleIntakeService, private serviceTypeApi: ServiceTypeService, private route: ActivatedRoute) {  
+  constructor(private router: Router,public auth: AuthService, private vehicleIntakeService: VehicleIntakeService,
+     private serviceTypeApi: ServiceTypeService, private route: ActivatedRoute, private discountService: DiscountCodeService
+     ) {  
     this.vehicleIntakeId = Number(route.snapshot.paramMap.get('id'));
   }
   ngOnInit(): void {
@@ -51,10 +63,19 @@ export class VehicleIntakeComponent implements OnInit {
     let storeId = Number(localStorage.getItem('storeId'));
     this.serviceTypeApi.GetByStoreId(storeId).subscribe(x =>{
       this.serviceTypes = x.items;
+      this.getDiscountCode();
     })
   }
   onServiceTypeSelection(val: any){
     this.serviceType = val;
+    debugger;
+    this.price  = this.serviceType.price;
+  }
+
+  getDiscountCode(){
+    this.discountService.GetByStoreId(Number(localStorage.getItem('storeId'))).subscribe(x =>{
+      this.discountCodes = x.items;
+    })
   }
 
   clickAccept(){
@@ -67,6 +88,7 @@ export class VehicleIntakeComponent implements OnInit {
     model.serviceTypesId = this.serviceType.id;
     model.status = 'InService';
     model.vehicleType = this.vehicleType;
+    model.discountCodeId = this.discountCodeId;
     model.storeId = Number(localStorage.getItem('storeId'));
     
     console.log(model);
@@ -87,6 +109,14 @@ export class VehicleIntakeComponent implements OnInit {
     
   }
 
+  discountCodeChanged(val: DiscountCode){
+    console.log(val);
+    debugger;
+    this.price = this.serviceType.price - (this.serviceType.price * val.percentage / 100);
+    this.discountCodeId = val.id;
+    
+  }
+
   private resetForm(){
     this.vehicleIntakeId = 0;
     this.numberPlate = '';
@@ -94,5 +124,8 @@ export class VehicleIntakeComponent implements OnInit {
     this.phone = '';
     this.serviceType = new ServiceType();
     this.vehicleType = 'Sedan';    
+    this.discountCodeId = 0;
+    this.price = 0;
+    this.vehicleIntakeId = 0;
   }
 }

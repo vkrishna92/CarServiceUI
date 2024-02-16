@@ -1,14 +1,31 @@
-<div class="container">
-    <div class="d-flex justify-content-between p-2">
-        <div><h6>Service Types</h6></div>
-        <div></div>
-        <div>
-            <button  [routerLink]="['/service-type',0]" routerLinkActive="router-link-active"  nz-button nzType="default" nzShape="circle"><span nz-icon nzType="plus"></span></button>       
-        </div>
-    </div>
+<mat-toolbar>
+    <span>Service Type</span>
     
+</mat-toolbar>
+<div class="container-fluid">    
+    @if (false) {
+        
+    }
+    
+    <div class="d-flex justify-content-between m-2">
+        <div>
+            <nz-breadcrumb class="m-1">
+                <nz-breadcrumb-item>Home</nz-breadcrumb-item>       
+                <nz-breadcrumb-item>Service Types</nz-breadcrumb-item>
+            </nz-breadcrumb>
+        </div>
+        <div></div>
+        <button  [routerLink]="['/service-type',0]" routerLinkActive="router-link-active"  nz-button nzType="default"><span nz-icon nzType="plus"></span>NEW</button>
+    </div>    
     <nz-spin [nzSpinning]="isLoading">
-        <nz-list nzBordered nzSize="small" >      
+        <ag-grid-angular 
+        [rowData]="data" 
+        [columnDefs]="colDefs"
+        class="ag-theme-quartz"
+        style="height: 500px;"
+        (rowDoubleClicked)="onRowDoubleClicked($event)"
+        ></ag-grid-angular>
+        <nz-list nzBordered nzSize="small" *ngIf="false" >      
             @for (item of data; track $index) {
                 <nz-list-item [routerLink]="['/service-type',item.id]" routerLinkActive="router-link-active" >
                     {{item.serviceName}}
