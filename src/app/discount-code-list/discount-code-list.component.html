@@ -16,21 +16,27 @@
              
             <form nz-form [formGroup]="discountCodeForm">
                 <nz-form-item>
-                    <nz-form-label [nzSpan]="6" nzFor="code">Code</nz-form-label>
+                    <nz-form-label [nzSpan]="7" nzFor="code">Code</nz-form-label>
                     <nz-form-control [nzSpan]="14">
                         <input nz-input name="code" type="text" id="code" formControlName="code">
                     </nz-form-control>
                 </nz-form-item>            
                 <nz-form-item>
-                    <nz-form-label [nzSpan]="6" nzFor="discount">Discount</nz-form-label>
+                    <nz-form-label [nzSpan]="7" nzFor="discount">Discount</nz-form-label>
                     <nz-form-control [nzSpan]="14">
                         <nz-input-number class="w-100" formControlName="percentage" [nzMin]="1" [nzMax]="100" [nzStep]="1" [nzFormatter]="formatterPercent" [nzParser]="parserPercent"></nz-input-number>                    
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
-                    <nz-form-label [nzSpan]="6" nzFor="isActive">Is Active</nz-form-label>
+                    <nz-form-label [nzSpan]="7" nzFor="activeFrom">Active From</nz-form-label>
                     <nz-form-control [nzSpan]="14">
-                        <nz-switch formControlName="isActive" id="isActive"></nz-switch>
+                        <nz-date-picker formControlName="activeFrom"></nz-date-picker>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="7" nzFor="activeTo">Active To</nz-form-label>
+                    <nz-form-control [nzSpan]="14">
+                        <nz-date-picker formControlName="activeTo"></nz-date-picker>
                     </nz-form-control>
                 </nz-form-item>
             </form>

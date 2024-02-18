@@ -15,12 +15,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subject } from 'rxjs';
 
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule,RouterModule, RouterOutlet,
     NzListModule, 
+    NzDividerModule,
     NzPageHeaderModule,
     NzBreadCrumbModule,
     MatToolbarModule,

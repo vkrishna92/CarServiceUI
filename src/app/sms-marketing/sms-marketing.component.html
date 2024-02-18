@@ -10,12 +10,14 @@
             </nz-breadcrumb>
         </div>
         <div></div>
-        <button  [routerLink]="['/sms-marketing',0]" routerLinkActive="router-link-active"  nz-button nzType="default"><span nz-icon nzType="plus"></span>NEW</button>
+        <button  [routerLink]="['/send-sms']" routerLinkActive="router-link-active"  nz-button nzType="default"><span nz-icon nzType="plus"></span>SEND SMS</button>
     </div>    
     <nz-spin [nzSpinning]="isLoading">
         <ag-grid-angular 
         [rowData]="data" 
         [columnDefs]="colDefs"
+        [pagination]="true"
+        [paginationPageSizeSelector]="false"   
         class="ag-theme-balham"
         style="height: 500px;"
         (rowDoubleClicked)="onRowDoubleClicked($event)"

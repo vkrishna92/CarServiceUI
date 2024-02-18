@@ -25,7 +25,7 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzNoAnimationModule } from 'ng-zorro-antd/core/no-animation';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
-
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 @Component({
   selector: 'app-discount-code-list',
@@ -49,6 +49,7 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
     NzListModule,
     NzButtonModule,
     NzBreadCrumbModule,
+    NzDatePickerModule,
     NzFormModule,
     AgGridAngular
   ],
@@ -63,7 +64,8 @@ export class DiscountCodeListComponent implements OnInit {
   colDefs: ColDef[] = [
     { field: "code" },
     { field: "percentage" },
-    { field: "isActive" },
+    { field: 'activeFrom'},
+    { field: 'activeTo'},
     { field: "createdOn" },
     {field: "modifiedOn"}
     
@@ -77,7 +79,8 @@ export class DiscountCodeListComponent implements OnInit {
     id: new FormControl(0, [Validators.required]),
     code : new FormControl('', [Validators.required]),
     percentage : new FormControl(0, [Validators.required]),
-    isActive : new FormControl(true, [Validators.required]),
+    activeTo : new FormControl(new Date(), [Validators.required]),
+    activeFrom : new FormControl(new Date(), [Validators.required]),
     storeId : new FormControl(0, [Validators.required]),
     createdOn : new FormControl(new Date(), [Validators.required]),
     createdBy : new FormControl('', [Validators.required]),

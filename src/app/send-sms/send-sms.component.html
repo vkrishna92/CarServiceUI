@@ -6,6 +6,7 @@
     <nz-breadcrumb-item>Send SMS</nz-breadcrumb-item>
 </nz-breadcrumb>
 <div class="container">
+    <nz-spin [nzSpinning]="isLoading">
     <mat-stepper #stepper>
         <mat-step title="EDIT TEXT">
             <ng-template matStepLabel>EDIT TEXT</ng-template>
@@ -15,49 +16,48 @@
                 <div class="col-6">
                     <textarea rows="10" nz-input [(ngModel)]="inputValue"></textarea> 
                     <div class="d-flex justify-content-center">
-                        <button nz-button nzType="primary" class="w-50 mt-2" (click)="clickNext()">NEXT</button>
+                        <button nz-button nzType="primary" class="w-50 mt-2" (click)="clickNext()">SEND</button>
                     </div>
                     
                 </div>
                 <div class="col-3"></div>
             </div>
-        </mat-step>
-        <mat-step >
-            <ng-template matStepLabel>SELECT CUSTOMER GROUPS</ng-template>
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <nz-form-item class="w-100">
-                        <nz-form-label>Customer group</nz-form-label>
-                        <nz-form-control>
-                            <nz-select nzMode="tags" nzSize="large" class="w-50">
-                                @for (item of listOfOption; track $index) {
-                                    <nz-option [nzLabel]="item.label" [nzValue]="item.value"></nz-option>
-                                }
-                            </nz-select>
-                        </nz-form-control>
-                    </nz-form-item>
-                    <div class="d-flex justify-content-center">
-                        <button nz-button nzType="default" class="w-50 m-2" (click)="clickBack()">BACK</button>
-                        <button nz-button nzType="primary" class="w-50 m-2" (click)="clickNext()">NEXT</button>
-                    </div>
-                </div>
-                <div class="col-6"></div>
-            </div>
-            
-        </mat-step>
+        </mat-step>        
         <mat-step>
             <ng-template matStepLabel>SUMMARY</ng-template>
-            <nz-result
-            nzStatus="success"
-            nzTitle="SMS Delivery Success"
-            nzSubTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
-          >
-            <div nz-result-extra>
-              <button nz-button nzType="primary">Go Console</button>
-              <button nz-button>Buy Again</button>
-            </div>
-          </nz-result>
+            @if (isDelivered) {
+                <nz-result       
+
+                nzStatus="success"            
+                nzTitle="SMS Sent Successfully"
+                nzSubTitle="SMS has been sent successfully to all the customers"
+              >
+                <div nz-result-extra>
+                  <button nz-button nzType="primary" (click)="viewHistory()">View History</button>
+                  <button nz-button (click)="sendAgain()">Send Again</button>
+                </div>
+              </nz-result>
+            }
+            @else{
+                <nz-result       
+
+                nzStatus="error"            
+                nzTitle="SMS Sent Failed"
+                nzSubTitle="SMS has been failed to send to all the customers. Please try again."
+              >
+                <div nz-result-extra>
+                  <button nz-button nzType="primary" (click)="viewHistory()">View History</button>
+                  <button nz-button (click)="sendAgain()">Send Again</button>
+                </div>
+              </nz-result>
+            }
+            
         </mat-step>
     </mat-stepper>
+    </nz-spin>
 </div>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Confirmation" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+      <p>Do you want to send the SMS to all your customer ?</p>      
+    </ng-container>
+</nz-modal>
