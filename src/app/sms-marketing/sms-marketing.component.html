@@ -1,0 +1,24 @@
+<mat-toolbar>
+    <span>SMS Marketing</span>
+</mat-toolbar>
+<div class="container-fluid">
+    <div class="d-flex justify-content-between m-2">
+        <div>
+            <nz-breadcrumb class="m-1">
+                <nz-breadcrumb-item>Home</nz-breadcrumb-item>       
+                <nz-breadcrumb-item>SMS Marketing</nz-breadcrumb-item>
+            </nz-breadcrumb>
+        </div>
+        <div></div>
+        <button  [routerLink]="['/sms-marketing',0]" routerLinkActive="router-link-active"  nz-button nzType="default"><span nz-icon nzType="plus"></span>NEW</button>
+    </div>    
+    <nz-spin [nzSpinning]="isLoading">
+        <ag-grid-angular 
+        [rowData]="data" 
+        [columnDefs]="colDefs"
+        class="ag-theme-balham"
+        style="height: 500px;"
+        (rowDoubleClicked)="onRowDoubleClicked($event)"
+        ></ag-grid-angular>        
+    </nz-spin>
+</div>

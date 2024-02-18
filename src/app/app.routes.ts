@@ -11,6 +11,9 @@ import { DiscountCodeListComponent } from './discount-code-list/discount-code-li
 import { AddEditDiscountCodeComponent } from './add-edit-discount-code/add-edit-discount-code.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { SmsMarketingComponent } from './sms-marketing/sms-marketing.component';
+import { SendSMSComponent } from './send-sms/send-sms.component';
 
 export const routes: Routes = [
     {path:'vehicle-intake/:id', component: VehicleIntakeComponent}, 
@@ -19,8 +22,11 @@ export const routes: Routes = [
     {path:'vehicle-queue', component: VehicleQueueComponent},
     {path:'service-invoice/:id', component: ServiceInvoiceComponent},
     {path:'vehicle-history-search', component: VehicleServiceHistoryComponent},
+    {path:'sms-marketing', component: SmsMarketingComponent},
+    {path: 'send-sms', component: SendSMSComponent},
     { path : 'discount-codes', component: DiscountCodeListComponent},
     { path : 'discount-code/:id', component: AddEditDiscountCodeComponent},
+    {path:'customer', component: CustomerListComponent},
     {path:'login', component: LoginComponent},
     {path:'myprofile', component: MyProfileComponent},
     {path :'reset-password', component: ResetPasswordComponent},

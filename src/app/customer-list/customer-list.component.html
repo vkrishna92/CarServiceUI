@@ -1,0 +1,22 @@
+<mat-toolbar>
+    <span>Customer</span>
+</mat-toolbar>
+<div class="container-fluid">
+    <nz-breadcrumb class="p-2">
+        <nz-breadcrumb-item>Home</nz-breadcrumb-item>        
+        <nz-breadcrumb-item>Customers</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    
+    <nz-spin [nzSpinning]="isLoading">
+        <ag-grid-angular 
+        [rowData]="data" 
+        [columnDefs]="colDefs"
+        class="ag-theme-balham"
+        style="height: 500px;"
+        [pagination]="true"
+        [paginationAutoPageSize]="true"
+        [paginationPageSizeSelector]="false"        
+        (rowDoubleClicked)="onRowDoubleClicked($event)"
+        ></ag-grid-angular>        
+    </nz-spin>
+</div>
